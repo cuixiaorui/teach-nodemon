@@ -1,0 +1,16 @@
+{
+  "name": "teach-nodemon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chokidar": "^3.5.2",
+    "koa": "^2.13.1"
+  }
+}

@@ -39,3 +39,6 @@
 - exec 和 spawn 的区别
 - 使用 .kill("SIGTERM") 杀死子进程
 - 使用 debounce 来优化程序
+
+## 参考
+- [nodekeeper](https://github.com/Pankajtanwarbanna/nodekeeper)

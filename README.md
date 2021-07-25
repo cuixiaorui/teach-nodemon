@@ -31,7 +31,7 @@
 
 6. 最后我在把上面的所有流程封装一下，就可以使用了
 7. 但是还是有问题，比如文件我保存了但是我并没有做任何的改变，那么也不能一直 kill child, 如何去优化呢？
-   1. 看看debounce 的概念,也就是防抖
+   1. 连续的事件只需触发一次回调的场合，就可以使用 debounce ,也就是防抖。来进行优化
 
 ### 知识点总结
 - 使用 chokidar 来观察文件的变化
@@ -39,3 +39,6 @@
 - exec 和 spawn 的区别
 - 使用 .kill("SIGTERM") 杀死子进程
 - 使用 debounce 来优化程序
+
+## 参考
+- [nodekeeper](https://github.com/Pankajtanwarbanna/nodekeeper)

@@ -1,5 +1,8 @@
 ## 学习 nodemon 的实现原理
 
+- [视频](https://www.bilibili.com/video/BV1Rf4y157ad)
+- [文章](https://mp.weixin.qq.com/s/HHmVjCgAIe7WPJMPw-u0og)
+
 
 ## 授课
 以问题来驱动教学

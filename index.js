@@ -1,48 +1,40 @@
 const chokidar = require("chokidar");
-const exec = require("child_process").exec;
-const spawn = require("child_process").spawn;
-
-// exec("node main.js", (data) => {
-//   console.log(data);
-// });
-
-// spawn("node", ["main.js"], {
-//   stdio: [process.stdin, process.stdout, process.stderr],
-// });
+const { exec, spawn } = require("child_process");
 
 let childProcess;
-let debounceRestart = debounce(restart, 1500);
+let debounceRestart = debounce(restart, 500);
 
-chokidar
-  .watch(["main.js"], {
-    ignored: "**/node_modules/**",
-  })
-  .on("all", (type, fileName) => {
-    //     console.log(type, fileName);
-    //     console.log("File changes detected");
+// One-liner for current directory
+chokidar.watch(["main.js"]).on("all", (event, path) => {
+  console.log(event, path);
 
-    console.log("all");
-    debounceRestart();
-  });
-
-// 防抖
-// 这样的话，只需要最后在执行 restart 就可以了
-function debounce(fn, time) {
-  let id = 0;
-  return () => {
-    clearTimeout(id);
-    id = setTimeout(() => {
-      fn();
-    }, time);
-  };
-}
+  debounceRestart();
+});
 
 function restart() {
   console.log("restart");
-  if (childProcess) {
-    childProcess.kill("SIGTERM");
-  }
+  childProcess && childProcess.kill();
+
   childProcess = spawn("node", ["main.js"], {
     stdio: [process.stdin, process.stdout, process.stderr],
   });
 }
+
+function debounce(fn, delay) {
+  let id;
+  return () => {
+    clearTimeout(id);
+
+    id = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+// exec("node test.js", (err, stdout) => {
+//   console.log(stdout);
+// });
+
+// spawn("node", ["test.js"], {
+//   stdio: [process.stdin, process.stdout, process.stderr],
+// });
